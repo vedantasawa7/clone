@@ -1,65 +1,68 @@
-.popular-card{
-    cursor:pointer;
-    margin:20px 20px 0 0;
+.popular-card, .top-rated-card {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.moviestar{
+
+.popular-card {
+    margin: 20px 20px 0 0;
+}
+
+.popular-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.moviestar, .movierating {
     visibility: hidden;
-    position:absolute;
-    top:0;
-    padding:5px;
-    color:var(--red);
-    /* font-size: 48px;  */ 
+    position: absolute;
+    width: 100%;
     text-align: center;
 }
-.movierating{
-    visibility: hidden;
-    height:auto;
-    width:100%;
-    position:absolute;
-    bottom:0;
+
+.moviestar {
+    top: 0;
+    padding: 5px;
+    color: var(--red);
+}
+
+.movierating {
+    bottom: 0;
     background-color: var(--transparent-bg);
+    color: var(--white);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    color:var(--white);
-    flex-wrap: wrap;
 }
 
-.movierating p{
-    text-align: center;
+.movierating p:last-child {
+    color: rgb(253, 204, 13);
 }
 
-.movierating p:last-child{
-     color:rgb(253, 204, 13);
-}
-
-.popular-card:hover .moviestar{
+.popular-card:hover .moviestar, 
+.popular-card:hover .movierating {
     visibility: visible;
-    animation: myAnim 1s ease 0s 1 normal forwards;
-}
-.popular-card:hover .movierating{
-    visibility: visible;
-    animation: myAnim 1s ease 0s 1 normal forwards;
+    animation: fadeIn 0.5s ease-in-out forwards;
 }
 
-.top-rated-card{
-    padding:10px;
-    font-size:0.75rem;
-    margin:0 auto;
-    cursor:pointer;
-    color:var(--white);
-}
-.top-rated-card p {
-    margin-top:10px;
+.top-rated-card {
+    padding: 10px;
+    font-size: 0.75rem;
+    margin: 0 auto;
+    color: var(--white);
 }
 
-@keyframes myAnim {
-	0% {
-		opacity: 0;
-	}
+.top-rated-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
 
-	100% {
-		opacity: 1;
-	}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

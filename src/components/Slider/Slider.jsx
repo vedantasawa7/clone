@@ -3,7 +3,7 @@ import axios from 'axios'
 import "./slider.css"
 import Ratings from '../Ratings/Ratings'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
-import {Link, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 function Slider({apiKey, baseUrl}) {
     const [upcomingMovies, setUpcomingMovies]=useState([])
@@ -15,7 +15,6 @@ function Slider({apiKey, baseUrl}) {
     const handlePage=()=>{
     scrollTo({top: 0, left: 0, behavior: "smooth"})
     navigate(`/moviedetails/${upcomingMovies[index]?.id}`)
-    // window.location.reload(); // Auto-refresh the page
 }
 
     useEffect (()=>{
@@ -57,7 +56,6 @@ const handleLeft=()=>{
 
 }
 
-    
   return (
       <div style={sliderStyle}>
 
@@ -67,7 +65,7 @@ const handleLeft=()=>{
     <MdKeyboardArrowRight onClick={handleRight} className="right-arrow" />
     <div className="slider-info">
         <h1>{upcomingMovies[index]?.title}</h1>
-        <p className='slider-description'> {upcomingMovies[index]?.overview.slice(0,130)}..</p>
+        <p className='slider-description'> {upcomingMovies[index]?.overview.slice(0,250)}..</p>
         <p>Release Date: {upcomingMovies[index]?.release_date && upcomingMovies[index].release_date.split('-').reverse().join('-').replace(/(\d{2})-(\d{2})-(\d{4})/, '$2-$1-$3')}</p>
         <Ratings movieRating={movieRatings[index]}/>
         <p className='see-more-btn' onClick={handlePage}>See Details</p>

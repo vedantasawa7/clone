@@ -1,56 +1,46 @@
-import { useContext, useState, useEffect } from 'react';
-import { ThemeContext } from '../../context/ThemeContext';
-import { Link, useNavigate } from 'react-router-dom';
-import './header.css';
-import { MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
-import { UserContext } from '../../context/UserContext';
-import SearchResults from '../SearchResults/SearchResults';
-import axios from 'axios';
+import { useContext, useState, useEffect } from "react";
+import { ThemeContext } from "../../context/ThemeContext";
+import { Link, useNavigate } from "react-router-dom";
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
+import axios from "axios";
+import SearchResults from "../SearchResults/SearchResults";
+import "./header.css";
 
 function Header({ baseUrl, apiKey }) {
-  const { user, token } = useContext(UserContext);
   const navigate = useNavigate();
   const { darkMode, setDarkMode } = useContext(ThemeContext);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [profileOptions, setProfileOptions] = useState(false);
 
   useEffect(() => {
-    if (query.trim().length > 0) {
+    if (query.trim()) {
       axios
         .get(`${baseUrl}/search/movie?api_key=${apiKey}&query=${query}`)
-        .then((res) => {
-          setSearchResults(res.data.results);
-        })
+        .then((res) => setSearchResults(res.data.results))
         .catch((err) => console.log(err));
     }
   }, [query]);
 
-  // Toggle dark/light mode
   const handleTheme = () => {
-    const newDarkMode = !darkMode;
-    setDarkMode(newDarkMode);
-    localStorage.setItem('darkMode', newDarkMode);
-  };
-
-  // Logout function
-  const handleLogout = () => {
-    localStorage.clear();
-    navigate('/');
+    setDarkMode((prev) => {
+      const newMode = !prev;
+      localStorage.setItem("darkMode", newMode);
+      return newMode;
+    });
   };
 
   return (
-    <div className={darkMode ? 'header-container' : 'header-container header-light'}>
+    <div className={`header-container ${darkMode ? "" : "header-light"}`}>
       <Link className="logo" to="/">NetfliX</Link>
 
       <div className="search-container">
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className={`search-input ${query && 'input-active'} ${!query && !darkMode && query}`}
+          className={`search-input ${query && "input-active"}`}
           placeholder="Search movies"
         />
-        {query.trim() !== '' && (
+        {query.trim() && (
           <div className="search-results-container">
             {searchResults.map((movie) => (
               <SearchResults setQuery={setQuery} key={movie.id} movie={movie} />
@@ -59,26 +49,16 @@ function Header({ baseUrl, apiKey }) {
         )}
       </div>
 
-      <div className="header-buttons-container">
-        {/* Dark/Light Mode Toggle */}
-        <div className="theme-button-container">
-          {darkMode ? (
-            <div className="theme-buttons">
-              <MdOutlineLightMode onClick={handleTheme} className="theme-icon" />
-              <MdOutlineDarkMode className="theme-icon theme-icon-active" />
-            </div>
-          ) : (
-            <div className="theme-buttons">
-              <MdOutlineLightMode className="theme-icon theme-icon-active" />
-              <MdOutlineDarkMode onClick={handleTheme} className="theme-icon" />
-            </div>
-          )}
-        </div>
+      {/* <button className="fav-button" onClick={() => navigate("/favorites")}>
+        My Favorites
+      </button> */}
 
-        {/* Favorites Button */}
-        <button className="fav-button" onClick={() => navigate('/favorites')}>
-          My Favorites
-        </button>
+      <div className="theme-buttons">
+        {darkMode ? (
+          <MdOutlineLightMode onClick={handleTheme} className="theme-icon" />
+        ) : (
+          <MdOutlineDarkMode onClick={handleTheme} className="theme-icon" />
+        )}
       </div>
     </div>
   );

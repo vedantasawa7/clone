@@ -13,16 +13,7 @@ function Ratings({movieRating}) {
           starSpacing='1px'
           starRatedColor="red"
           starEmptyColor='grey'
-          
-        
-          
         />
-        
-    
-        
-        
-        
-        
         </div>
   )
 }

@@ -41,7 +41,7 @@
     background-color: var(--light-bg);
     color:black;
 }
-.add-btn{
+/* .add-btn{
     color:var(--red);
     font-size:1rem;
     margin-left:10px;
@@ -54,7 +54,7 @@
     margin-left:10px;
     font-style: italic;
     cursor:pointer;
-}
+} */
 .details-poster{
     width:280px;
     border-radius: 8px;

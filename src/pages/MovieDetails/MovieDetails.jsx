@@ -42,46 +42,46 @@ export default function MovieDetails({baseUrl,apiKey, serverUrl}) {
 
 
 
-const addToFavorites=()=>{
-  console.log(serverUrl)
-  if(!token){
-     alert('Please login to add a movie to your favorites.')
-  }else{
-    axios.post(`${serverUrl}favoriteMovies`,{
-      user_id:user._id,
-      movie_id:movie.id
-    })
-    .then(res=>{
-      setAdded(true)
-    })
-    .catch(err=>console.log(err))
-  }
+// const addToFavorites=()=>{
+//   console.log(serverUrl)
+//   if(!token){
+//      alert('Please login to add a movie to your favorites.')
+//   }else{
+//     axios.post(`${serverUrl}favoriteMovies`,{
+//       user_id:user._id,
+//       movie_id:movie.id
+//     })
+//     .then(res=>{
+//       setAdded(true)
+//     })
+//     .catch(err=>console.log(err))
+//   }
 
-}
+// }
 
-const removeFromFavorites=()=>{
-  axios.delete(`${serverUrl}favoriteMovies/${user._id}/${movie.id}`)
-  .then(res=>{
-    console.log(res.data)
-    setAdded(false)
-  })
-  .catch(err=>console.log(err))
-}
+// const removeFromFavorites=()=>{
+//   axios.delete(`${serverUrl}favoriteMovies/${user._id}/${movie.id}`)
+//   .then(res=>{
+//     console.log(res.data)
+//     setAdded(false)
+//   })
+//   .catch(err=>console.log(err))
+// }
 
-useEffect(() => {
-  axios.post(`${serverUrl}favoriteMovies/search`,{ 
-    user_id:user._id,
-    tmdb_id:movie.id
-  })
-  .then(res=>{
-    if(res.data===null){ 
-      setAdded(false)
-    }else{ 
-      setAdded(true)
-    }
-  })
-  .catch(err=>console.log(err))
-}, [user,movie])
+// useEffect(() => {
+//   axios.post(`${serverUrl}favoriteMovies/search`,{ 
+//     user_id:user._id,
+//     tmdb_id:movie.id
+//   })
+//   .then(res=>{
+//     if(res.data===null){ 
+//       setAdded(false)
+//     }else{ 
+//       setAdded(true)
+//     }
+//   })
+//   .catch(err=>console.log(err))
+// }, [user,movie])
 
 return ( 
 <div className={darkMode ?"movie-details-container" : "movie-details-container details-light"}>
@@ -94,7 +94,7 @@ return (
             playerVars: { showinfo: 1,origin:"http://localhost:3000" }
           }
         }}
-        // playing
+       
         width='100%'
         height='100%'
         controls={true}
@@ -110,11 +110,11 @@ return (
   <div className={darkMode ?"details-container" :"details-container details-light" }>
         <div className="title-container">
           <h1>{movie.title}</h1>
-          {
+          {/* {
             added 
             ? <span className="remove-btn" onClick={removeFromFavorites}>Remove from favorites.</span> 
             : <span className="add-btn" onClick={addToFavorites}>Add to favorites.</span>
-          }
+          } */}
         </div>
         <Ratings movieRating={movieRating} />
         <div className="info-container">
