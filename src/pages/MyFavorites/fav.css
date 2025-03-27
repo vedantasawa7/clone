@@ -1,19 +1,45 @@
+/* Default styles */
 .favorites-container {
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  /* Dark Theme */
-  .dark-theme {
-    background-color: #121212;
-    color: white;
-  }
-  
-  /* Light Theme */
-  .light-theme {
-    background-color: #ffffff;
-    color: black;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+  min-height: 100vh;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Light Mode */
+.favorites-light {
+  background-color: #f4f4f4;
+  color: #000;
+}
+
+/* Dark Mode (Netflix Style) */
+.favorites-dark {
+  background-color: #141414;
+  color: #fff;
+}
+
+/* Movie card styling */
+.popular-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.popular-card:hover {
+  transform: scale(1.05);
+}
+
+/* Message for no favorites */
+.no-favorites {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 50px;
+  opacity: 0.8;
+}

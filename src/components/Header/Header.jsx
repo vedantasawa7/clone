@@ -51,9 +51,9 @@ function Header({ baseUrl, apiKey }) {
         )}
       </div>
 
-      {/* <button className="fav-button" onClick={() => navigate('/favorites')}>
+      <button className="fav-button" onClick={() => navigate('/favorites')}>
           My Favorites
-        </button> */}
+        </button>
 
       <div className="header-buttons-container">
       <div className="theme-buttons">

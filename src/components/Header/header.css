@@ -116,6 +116,36 @@ color:var(--white);
   padding:0;
 }
 
+:root {
+    --netflix-red: #e50914;
+    --button-bg-light: white;
+    --button-bg-dark: black;
+  }
+  
+  .fav-button {
+    color: var(--netflix-red);
+    background: var(--button-bg-light);
+    border: 2px solid var(--netflix-red);
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .fav-button:hover {
+    background: var(--netflix-red);
+    color: white;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .fav-button {
+      background: var(--button-bg-dark);
+    }
+  }
+  
+
 @keyframes input {
 	0% {
 		opacity: 0;

@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { useNavigate} from "react-router-dom";
-import noImage from '../../assets/no-image.png'
+import noImage from '../../assets/no-image.svg.png'
 
 function SearchResults({movie,setQuery}) {
     const navigate = useNavigate();
