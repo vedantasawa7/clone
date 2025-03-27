@@ -1,0 +1,19 @@
+.favorites-container {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Dark Theme */
+  .dark-theme {
+    background-color: #121212;
+    color: white;
+  }
+  
+  /* Light Theme */
+  .light-theme {
+    background-color: #ffffff;
+    color: black;
+  }
+  
