@@ -6,6 +6,7 @@ import { ThemeContext } from '../../context/ThemeContext';
 import Ratings from '../../components/Ratings/Ratings';
 import './movie.css';
 
+
 export default function MovieDetails({ baseUrl, apiKey, serverUrl }) {
     const { movieid } = useParams();
     const [videoLink, setVideoLink] = useState('');
