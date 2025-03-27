@@ -6,8 +6,7 @@ import axios from 'axios';
 
 function MyFavorites({ serverUrl }) {
     const [movies, setMovies] = useState([]);
-    const { darkMode } = useContext(ThemeContext); // Access the theme mode
-
+    const { darkMode } = useContext(ThemeContext); 
     useEffect(() => {
         axios.get(`${serverUrl}favoriteMovies`)
             .then(res => {
