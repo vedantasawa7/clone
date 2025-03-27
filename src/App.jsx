@@ -4,7 +4,7 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import CombinedContextProvider from './context/index'
 import HomePage from './pages/HomePage/HomePage'
 import MovieDetails from './pages/MovieDetails/MovieDetails';
-import MyFavorites from './pages/MyFavorites/MyFavorites';
+// import MyFavorites from './pages/MyFavorites/MyFavorites';
 
 function App() {
   const apiKey = "8ff72cfe0871eca79c1016ea37ac82c0"
@@ -20,7 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage apiKey={apiKey} baseUrl={baseUrl} />}/>
         <Route path="/moviedetails/:movieid" element={<MovieDetails serverUrl={serverUrl} baseUrl={baseUrl} apiKey={apiKey}/>}/>
-        <Route path="/myfavorites" element={<MyFavorites serverUrl={serverUrl} baseUrl={baseUrl} apiKey={apiKey}/>}/>
+        {/* <Route path="/myfavorites" element={<MyFavorites serverUrl={serverUrl} baseUrl={baseUrl} apiKey={apiKey}/>}/> */}
       </Routes>
       </CombinedContextProvider>
       </BrowserRouter>
